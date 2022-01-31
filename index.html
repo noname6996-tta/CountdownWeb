@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="newyearletter.css">
+    <link rel="icon" href="icons8_tiger_50px.png">
+    <title>Countdown Web</title>
+    <style>
+        :root {
+            --color-white: #ffffff;
+            --color-black: #202020;
+            --color-glass: rgba(255, 255, 255, 0.05);
+            --color-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+        }
+        .countdown {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+        .box {
+            width: 28vmin;
+            height: 29vmin;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            position: relative;
+        }
+        span.num {
+            background-color: var(--color-glass);
+            backdrop-filter: blur(12px);
+            height: 100%;
+            width: 100%;
+            display: grid;
+            place-items: center;
+            font-size: 4em;
+            box-shadow: var(--color-shadow);
+            border-radius: 0.1em;
+        }
+        span.text {
+            font-size: 1em;
+            background-color: var(--color-white);
+            color: var(--color-black);
+            display: block;
+            width: 80%;
+            position: relative;
+            text-align: center;
+            bottom: 20px;
+            padding: 0.7em 0;
+            font-weight: 600;
+            border-radius: 0.3em;
+            box-shadow: var(--color-shadow);
+        }
+        * {
+                    
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            color: var(--color-white);
+        }
+        
+        body{
+            margin: 0 auto;
+            margin-top: 20px;
+            background-color: rgb(53, 89, 248);
+            background-image: url("https://1.bp.blogspot.com/-ckJYEbfLJYs/YN_QiXmEGbI/AAAAAAABQQw/S3U4yYhFSyI3lhP4ZVSQr8WX3tS1sA7aQCLcBGAsYHQ/w1600/Happy%2BNew%2BYear%2B2022%2BFull%2BHD%2BWallpaper.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+        .music{
+            margin: 0 auto;
+            text-align: center;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 4em;
+        }
+        .heading h3 {
+            font-size: 1.6em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 600;
+            background-color: var(--color-glass);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--color-shadow);
+            padding: 8px 30px;
+            display: inline-block;
+        }
+        .heading h1 {
+            text-shadow: var(--color-shadow);
+            font-size: 4.2em;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="heading">
+        <h3 id="title">Countdown Till</h3>
+        <h1>TET 2022</h1>
+        
+      </div>
+      
+    <div class="countdown">
+            <div class="box">
+            <span class="num" id="days">02</span>
+            <span class="text">Days</span>
+        </div>
+        <div class="box">
+            <span class="num" id="hours">02</span>
+            <span class="text">Hours</span>
+        </div>
+        <div class="box">
+            <span class="num" id="minutes">02</span>
+            <span class="text">Minutes</span>
+        </div>
+        <div class="box">
+            <span class="num" id="seconds">02</span>
+            <span class="text">Seconds</span>
+        </div>
+    </div>
+    <div class="music">
+        <iframe scrolling="no" width=640 height=180 src=https://zingmp3.vn/embed/song/ZWZFIOOW?start=true frameborder="0" allowfullscreen="true"></iframe>
+        
+    </div>
+    <div class="letter " onclick="display_letter()">
+        <div class="page increment " id="base" id="myinsp">
+         <div class="arrow-down"></div>
+            <div class="bottom_from">By Thế Anh</div> 
+            <div id="hny">Happy new year,
+                Chúc bạn và gia đình năm nay sẽ có nhiều hạnh phúc mới, mục tiêu mới, thành tựu mới và nhiều cảm hứng mới trong cuộc sống của bạn. Chúc cho mỗi ngày của năm mới đều tràn ngập thành công, hạnh phúc và an khang đến với bạn và những người bạn yêu quý.
+            </div>
+        </div>
+    </div>
+    <script>
+                let display_letter = () => {
+            let root = document.documentElement;
+            let base = document.getElementById('base')
+
+            root.style.setProperty('--page-height', '200px' );
+            document.getElementById('hny').style.display = "block";
+            base.classList.remove('increment')
+        }
+    </script>
+    
+    <script>
+        // Đặt ngày đếm ngược, ở đây mình đặt ngày đếm ngược là 01/02/2022
+        //February: Tháng hai, 01: Ngày, 2022: Năm, 00:00:00 or 24:00:00 thời gian của ngày đếm ngược
+        var countDownDate = new Date("February 01, 2022 00:00:00").getTime();
+        //var countDownDate = new Date("February 01, 2021 00:00:00").getTime();
+        // setInterval: Cập nhật đếm ngược sau mỗi 1 giây.
+        // 1000: 1 giây
+        var x = setInterval(function () {
+    
+            // Ngày và giờ hôm nay
+            var now = new Date().getTime();
+    
+            // Làm phép tính để đếm khoảng cách ngày hôm nay và ngày đếm ngược
+            var distance = countDownDate - now;
+    
+            // Tính toán thời gian cho ngày, giờ, phút và giây
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+            document.getElementById("days").innerText = days,
+            document.getElementById("hours").innerText = hours,
+            document.getElementById("minutes").innerText = minutes,
+            document.getElementById("seconds").innerText = seconds
+    
+            // Nếu kết thúc quá trình đếm ngược thì in ra thông báo gì đó
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("title").innerHTML = "CHÚC MỪNG NĂM MỚI";
+                document.getElementById("days").innerText = 0,
+                document.getElementById("hours").innerText = 0,
+                document.getElementById("minutes").innerText = 0,
+                document.getElementById("seconds").innerText = 0
+                
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
